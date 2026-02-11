@@ -2,8 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quotes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Harvey Specter Quotes</title>
+
+<!-- PWA / iOS Home Screen Support -->
+<link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#000000">
+
 <style>
 html, body {
     margin: 0;
@@ -45,7 +52,7 @@ html, body {
     transform: scale(1.03);
 }
 
-/* Galaxy star canvas */
+/* Galaxy stars canvas */
 canvas {
     position: absolute;
     top: 0;
@@ -60,7 +67,7 @@ canvas {
 <div class="quote-container" id="quoteContainer"></div>
 
 <script>
-// Quotes
+// Harvey Specter quotes
 const quotes = [
     "Win a no-win situation by rewriting the rules.",
     "I don't have dreams, I have goals.",
@@ -77,7 +84,7 @@ const quotes = [
 const container = document.getElementById('quoteContainer');
 let current = 0;
 
-// Create quote elements
+// Create quotes
 quotes.forEach(text => {
     const div = document.createElement('div');
     div.className = 'quote';
@@ -94,7 +101,7 @@ function showQuote(index){
     });
 }
 
-// Show initial quote
+// Initial quote
 showQuote(current);
 
 // Loop quotes every 7 seconds
@@ -103,14 +110,14 @@ setInterval(() => {
     showQuote(current);
 }, 7000);
 
-// ------- Galaxy Stars using Canvas -------
+// -------- Galaxy Stars using Canvas --------
 const canvas = document.getElementById('stars');
 const ctx = canvas.getContext('2d');
 let W = canvas.width = window.innerWidth;
 let H = canvas.height = window.innerHeight;
 
 const stars = [];
-const numStars = 100;
+const numStars = 120; // More stars for depth
 
 // Initialize stars
 for(let i=0;i<numStars;i++){
@@ -118,7 +125,7 @@ for(let i=0;i<numStars;i++){
         x: Math.random() * W,
         y: Math.random() * H,
         radius: Math.random() * 1.5 + 0.5,
-        speed: Math.random() * 0.3 + 0.05
+        speed: Math.random() * 0.4 + 0.05
     });
 }
 
@@ -137,11 +144,12 @@ function animateStars(){
 
 animateStars();
 
-// Update canvas size on resize
+// Resize canvas on window resize
 window.addEventListener('resize', () => {
     W = canvas.width = window.innerWidth;
     H = canvas.height = window.innerHeight;
 });
 </script>
+
 </body>
 </html>
